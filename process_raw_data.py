@@ -22,9 +22,8 @@ def main():
     iowa_data_df = readWholeIowaData()
     
     #print("\n".join(list(iowa_data_df.name.unique())))
-    for row in iowa_data_df.name.value_counts():
-        print(row)
-    #print()
+    pd.set_option('display.max_rows', 1000)
+    print(iowa_data_df.name.value_counts())
 
 
 if __name__ == "__main__":
