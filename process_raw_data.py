@@ -21,7 +21,7 @@ def main():
     
     iowa_data_df = readWholeIowaData()
     
-    print(iowa_data_df.name.unique())
+    print("\n".join(list(iowa_data_df.name.unique())))
 
 
 if __name__ == "__main__":
