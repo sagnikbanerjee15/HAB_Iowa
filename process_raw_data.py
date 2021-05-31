@@ -26,7 +26,7 @@ def main():
     print(iowa_data_df.shape)
     
     iowa_data_df['sampleDate']= pd.to_datetime(iowa_data_df['sampleDate']).dt.date
-    iowa_data_df['analyte'] = iowa_data_df['analyte'].str.replace('(AS ','(as ')
+    #iowa_data_df['analyte'] = iowa_data_df['analyte'].str.replace('(AS ','(as ')
     
 
     #print("\n".join(list(iowa_data_df.name.unique())))
