@@ -15,27 +15,8 @@ def readRawDataFiles():
 def readWholeIowaData():
     return pd.read_csv("raw_data/iowa.csv",low_memory=False)
 
-def main():
-    pd.set_option('display.expand_frame_repr', False)
-    # Read in the csv files from raw data directory
-    readRawDataFiles()
-    
-    iowa_data_df = readWholeIowaData()
-    print(iowa_data_df.shape)
-    iowa_data_df = iowa_data_df.drop_duplicates()
-    print(iowa_data_df.shape)
-    
-    iowa_data_df['sampleDate']= pd.to_datetime(iowa_data_df['sampleDate']).dt.date
-    #iowa_data_df['analyte'] = iowa_data_df['analyte'].str.replace('(AS ','(as ')
-    
-
-    #print("\n".join(list(iowa_data_df.name.unique())))
-    pd.set_option("display.max_rows", None, "display.max_columns", None)
-    #print(iowa_data_df.name.value_counts())
-    
-    #iowa_data_df_with_chlorophyll = iowa_data_df.loc[iowa_data_df['analyte'] == "Chlorophyll a, free of pheophytin"]
+def createDataWithChlorophyll(iowa_data_df):
     iowa_data_df_with_chlorophyll = iowa_data_df[iowa_data_df['analyte'].str.contains('Chlorophyll', case=False)]
-    print(iowa_data_df_with_chlorophyll.shape)
     unique_sites = iowa_data_df_with_chlorophyll.name.unique()
     for num,each_water_body_name in enumerate(unique_sites):
         iowa_data_df_each_water_body_name = iowa_data_df.loc[iowa_data_df['name'] == each_water_body_name]
@@ -55,11 +36,28 @@ def main():
         else:
             print(f"Skipping {each_water_body_name}")
             os.system(f"rm -f \"raw_data/{each_water_body_name}.csv\"")
-        #print(iowa_data_df_each_water_body_name.analyte.value_counts())
-        #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
-        
-        #print(iowa_data_df_each_water_body_name.shape)
-        #print(iowa_data_df_each_water_body_name.pivot(index='sampleDate', columns='analyte'))
+
+def main():
+    pd.set_option('display.expand_frame_repr', False)
+    # Read in the csv files from raw data directory
+    readRawDataFiles()
+    
+    iowa_data_df = readWholeIowaData()
+    print(iowa_data_df.shape)
+    iowa_data_df = iowa_data_df.drop_duplicates()
+    print(iowa_data_df.shape)
+    
+    iowa_data_df['sampleDate']= pd.to_datetime(iowa_data_df['sampleDate']).dt.date
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
+    
+    #createDataWithChlorophyll(iowa_data_df)
+    iowa_data_df_with_chlorophyll = iowa_data_df[iowa_data_df['analyte'].str.contains('Chlorophyll', case=False)]
+    unique_sites = iowa_data_df_with_chlorophyll.name.unique()
+    for num,each_water_body_name in enumerate(unique_sites):
+        if each_water_body_name!="Black Hawk Lake.csv":continue
+        filename = f"raw_data/{each_water_body_name}.csv"
+        each_water_body_data = pd.read_csv(f"raw_data/{each_water_body_name}.csv",low_memory=False)
+        print(each_water_body_data, index_col=0)
     
     
 
