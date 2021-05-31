@@ -13,13 +13,15 @@ def readRawDataFiles():
         iowa_data_df.to_csv("raw_data/iowa.csv")
 
 def readWholeIowaData():
-    iowa_data_df = pd.read_csv("raw_data/iowa.csv",low_memory=False)
+    return pd.read_csv("raw_data/iowa.csv",low_memory=False)
 
 def main():
     # Read in the csv files from raw data directory
     readRawDataFiles()
     
-    readWholeIowaData()
+    iowa_data_df = readWholeIowaData()
+    
+    print(iowa_data_df.name.unique())
 
 
 if __name__ == "__main__":
