@@ -33,7 +33,9 @@ def main():
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     #print(iowa_data_df.name.value_counts())
     
-    for each_water_body_name in ["Bloody Run Creek Site #1 (BR01)"]:
+    iowa_data_df_with_chlorophyll = iowa_data_df.loc[iowa_data_df['analyte'] == "Chlorophyll a, free of pheophytin"]
+    unique_sites = iowa_data_df_with_chlorophyll.name.unique()
+    for each_water_body_name in unique_sites:
         iowa_data_df_each_water_body_name = iowa_data_df.loc[iowa_data_df['name'] == each_water_body_name]
         iowa_data_df_each_water_body_name = iowa_data_df_each_water_body_name.sort_values(by = 'sampleDate')
         #print(iowa_data_df_each_water_body_name[['sampleDate', 'analyte','result']])
