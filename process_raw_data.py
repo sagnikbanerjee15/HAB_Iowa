@@ -49,12 +49,12 @@ def main():
             new_df.append(pd.Series(name=row["sampleDate"]))
             new_df.loc[row["sampleDate"],row["analyte"]] = row["result"]
         
-        if new_df.shape[0]>100:
+        if new_df.shape[0]>50:
             new_df.to_csv(f"raw_data/{each_water_body_name}.csv",sep = '\t')
             print(f"Processing data for {len(unique_sites)} {num+1} {each_water_body_name} {new_df.shape}")
         else:
             print(f"Skipping {each_water_body_name}")
-            os.system(f"rm \"raw_data/{each_water_body_name}.csv\"")
+            os.system(f"rm -f \"raw_data/{each_water_body_name}.csv\"")
         #print(iowa_data_df_each_water_body_name.analyte.value_counts())
         #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
         
