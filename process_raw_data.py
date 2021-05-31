@@ -44,7 +44,7 @@ def main():
         new_df = pd.DataFrame(columns = column_names)
         for index, row in iowa_data_df_each_water_body_name.iterrows():
             new_df.append(pd.Series(name=row["sampleDate"]))
-            new_df.loc(row["sampleDate"],row["analyte"]) = row["value"]
+            new_df.loc[row["sampleDate"],row["analyte"]] = row["value"]
         
         print(new_df)
         #print(iowa_data_df_each_water_body_name.analyte.value_counts())
