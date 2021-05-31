@@ -46,10 +46,10 @@ def main():
             new_df.append(pd.Series(name=row["sampleDate"]))
         
         print(new_df)
-        print(iowa_data_df_each_water_body_name.analyte.value_counts())
-        print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
+        #print(iowa_data_df_each_water_body_name.analyte.value_counts())
+        #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
         
-        print(iowa_data_df_each_water_body_name.shape)
+        #print(iowa_data_df_each_water_body_name.shape)
         #print(iowa_data_df_each_water_body_name.pivot(index='sampleDate', columns='analyte'))
     
     
