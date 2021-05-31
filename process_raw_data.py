@@ -26,9 +26,9 @@ def main():
     print(iowa_data_df.shape)
     
     iowa_data_df['sampleDate']= pd.to_datetime(iowa_data_df['sampleDate']).dt.date
-    #iowa_data_df['analyte'] = iowa_data_df['analyte'].replace("(AS ","(as ")
+    iowa_data_df['analyte'] = iowa_data_df['analyte'].str.replace("(AS ","(as ")
     
-    iowa_data_df=iowa_data_df.replace(to_replace='(AS ',value='(as ')
+
     #print("\n".join(list(iowa_data_df.name.unique())))
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     #print(iowa_data_df.name.value_counts())
