@@ -22,7 +22,7 @@ def main():
     iowa_data_df = readWholeIowaData()
     
     #print("\n".join(list(iowa_data_df.name.unique())))
-    pd.set_option('display.max_rows', 1000)
+    pd.set_option("display.max_rows", None, "display.max_columns", None)
     print(iowa_data_df.name.value_counts())
 
 
