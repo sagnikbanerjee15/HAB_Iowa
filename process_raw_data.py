@@ -35,8 +35,7 @@ def main():
     
     iowa_data_df_with_chlorophyll = iowa_data_df.loc[iowa_data_df['analyte'] == "Chlorophyll a, free of pheophytin"]
     unique_sites = iowa_data_df_with_chlorophyll.name.unique()
-    for each_water_body_name in unique_sites:
-        print(f"Processing data for {each_water_body_name} ")
+    for num,each_water_body_name in enumerate(unique_sites):
         iowa_data_df_each_water_body_name = iowa_data_df.loc[iowa_data_df['name'] == each_water_body_name]
         iowa_data_df_each_water_body_name = iowa_data_df_each_water_body_name.sort_values(by = 'sampleDate')
         #print(iowa_data_df_each_water_body_name[['sampleDate', 'analyte','result']])
@@ -49,6 +48,7 @@ def main():
             new_df.loc[row["sampleDate"],row["analyte"]] = row["result"]
         
         new_df.to_csv(f"raw_data/{each_water_body_name}.csv",sep = '\t')
+        print(f"Processing data for {num+1} {each_water_body_name} {new_df.shape}")
         #print(iowa_data_df_each_water_body_name.analyte.value_counts())
         #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
         
