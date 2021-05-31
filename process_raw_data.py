@@ -34,7 +34,6 @@ def main():
     #print(iowa_data_df.name.value_counts())
     
     #iowa_data_df_with_chlorophyll = iowa_data_df.loc[iowa_data_df['analyte'] == "Chlorophyll a, free of pheophytin"]
-    #iowa_data_df_with_chlorophyll = iowa_data_df[iowa_data_df['name'].str.contains(r'Chlorophyll(?!$)')]
     iowa_data_df_with_chlorophyll = iowa_data_df[iowa_data_df['analyte'].str.contains('Chlorophyll', case=False)]
     print(iowa_data_df_with_chlorophyll.shape)
     unique_sites = iowa_data_df_with_chlorophyll.name.unique()
@@ -50,8 +49,11 @@ def main():
             new_df.append(pd.Series(name=row["sampleDate"]))
             new_df.loc[row["sampleDate"],row["analyte"]] = row["result"]
         
-        new_df.to_csv(f"raw_data/{each_water_body_name}.csv",sep = '\t')
-        print(f"Processing data for {len(unique_sites)} {num+1} {each_water_body_name} {new_df.shape}")
+        if new_df.shape[0]>100:
+            new_df.to_csv(f"raw_data/{each_water_body_name}.csv",sep = '\t')
+            print(f"Processing data for {len(unique_sites)} {num+1} {each_water_body_name} {new_df.shape}")
+        else:
+            os.system(f"rm raw_data/{each_water_body_name}.csv")
         #print(iowa_data_df_each_water_body_name.analyte.value_counts())
         #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
         
