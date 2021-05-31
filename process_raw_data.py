@@ -59,6 +59,7 @@ def main():
         each_water_body_data = pd.read_csv(f"raw_data/{each_water_body_name}.csv",low_memory=False, index_col=0, sep ='\t')
         print(each_water_body_data.shape)
         each_water_body_data_not_null = each_water_body_data[each_water_body_data.columns[~each_water_body_data.isnull().any()]]
+        print(each_water_body_data_not_null.columns)
         print(each_water_body_data_not_null.shape)
         print(each_water_body_data_not_null.isnull().sum(axis=1).tolist())
     
