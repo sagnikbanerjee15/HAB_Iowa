@@ -60,6 +60,7 @@ def main():
         print(each_water_body_data.shape)
         each_water_body_data_not_null = each_water_body_data[each_water_body_data.columns[~each_water_body_data.isnull().all()]]
         print(each_water_body_data_not_null.shape)
+        print(each_water_body_data_not_null.isnull().sum(axis=1).tolist())
     
     
 
