@@ -29,7 +29,7 @@ def main():
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     #print(iowa_data_df.name.value_counts())
     
-    iowa_data_df_Bloody_Run_Creek_Site_1_BR01 = iowa_data_df.loc[iowa_data_df['name'] == 'Bloody Run Creek Site #1 (BR01)']
+    iowa_data_df_Bloody_Run_Creek_Site_1_BR01 = iowa_data_df.loc[iowa_data_df['name'] == 'Bloody Run Creek Site #1 (BR01)' & iowa_data_df['analyte'] == 'Temperature, water']
     iowa_data_df_Bloody_Run_Creek_Site_1_BR01 = iowa_data_df_Bloody_Run_Creek_Site_1_BR01.sort_values(by = 'sampleDate')
     print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
     print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01[['sampleDate', 'analyte']])
