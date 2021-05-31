@@ -21,7 +21,7 @@ def main():
     
     iowa_data_df = readWholeIowaData()
     
-    print("\n".join(list(iowa_data_df.name.unique())))
+    print("\n".join(list(iowa_data_df.name.value_counts())))
 
 
 if __name__ == "__main__":
