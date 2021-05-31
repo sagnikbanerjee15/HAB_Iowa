@@ -10,12 +10,16 @@ def readRawDataFiles():
         for file_num,eachfile in enumerate(all_files): 
             iowa_data_df = iowa_data_df.append( pd.read_csv(eachfile,low_memory=False))
             print(f"Finished appending {file_num+1} files")
-        print(iowa_data_df.head(5))
         iowa_data_df.to_csv("raw_data/iowa.csv")
+
+def readWholeIowaData():
+    iowa_data_df = pd.read_csv("raw_data/iowa.csv",low_memory=False)
 
 def main():
     # Read in the csv files from raw data directory
     readRawDataFiles()
+    
+    readWholeIowaData()
 
 
 if __name__ == "__main__":
