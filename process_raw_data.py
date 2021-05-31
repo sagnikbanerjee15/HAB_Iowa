@@ -56,7 +56,7 @@ def main():
     for num,each_water_body_name in enumerate(unique_sites):
         if each_water_body_name!="Black Hawk Lake":continue
         filename = f"raw_data/{each_water_body_name}.csv"
-        each_water_body_data = pd.read_csv(f"raw_data/{each_water_body_name}.csv",low_memory=False, index_col=0)
+        each_water_body_data = pd.read_csv(f"raw_data/{each_water_body_name}.csv",low_memory=False, index_col=0, sep ='\t')
         print(each_water_body_data)
     
     
