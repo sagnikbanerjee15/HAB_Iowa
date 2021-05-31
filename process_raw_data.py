@@ -20,6 +20,7 @@ def main():
     readRawDataFiles()
     
     iowa_data_df = readWholeIowaData()
+    iowa_data_df = iowa_data_df.drop_duplicates()
     
     iowa_data_df['sampleDate']= pd.to_datetime(iowa_data_df['sampleDate'])
     #print("\n".join(list(iowa_data_df.name.unique())))
