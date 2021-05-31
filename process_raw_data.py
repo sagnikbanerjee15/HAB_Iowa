@@ -35,7 +35,7 @@ def main():
     
     #iowa_data_df_with_chlorophyll = iowa_data_df.loc[iowa_data_df['analyte'] == "Chlorophyll a, free of pheophytin"]
     #iowa_data_df_with_chlorophyll = iowa_data_df[iowa_data_df['name'].str.contains(r'Chlorophyll(?!$)')]
-    iowa_data_df_with_chlorophyll = iowa_data_df.loc[iowa_data_df['name'].str.contains('Chlorophyll', case=False)]
+    iowa_data_df_with_chlorophyll = iowa_data_df[iowa_data_df['name'].str.contains('Chlorophyll', case=False)]
     print(iowa_data_df_with_chlorophyll.shape)
     unique_sites = iowa_data_df_with_chlorophyll.name.unique()
     for num,each_water_body_name in enumerate(unique_sites):
