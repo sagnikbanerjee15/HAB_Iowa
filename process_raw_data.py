@@ -33,18 +33,24 @@ def main():
     pd.set_option("display.max_rows", None, "display.max_columns", None)
     #print(iowa_data_df.name.value_counts())
     
-    iowa_data_df_Bloody_Run_Creek_Site_1_BR01 = iowa_data_df.loc[iowa_data_df['name'] == 'Bloody Run Creek Site #1 (BR01)']
-    iowa_data_df_Bloody_Run_Creek_Site_1_BR01 = iowa_data_df_Bloody_Run_Creek_Site_1_BR01.sort_values(by = 'sampleDate')
-    #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
-    print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01[['sampleDate', 'analyte','result']])
-    #print(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))
-    print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.value_counts())
-    print(f"Total analytes {len(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))}")
-    
-    print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
-    print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.pivot(index='sampleDate', columns='analyte'))
-    
-    #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01_water_temperature)
+    for each_water_body_name in ["Bloody Run Creek Site #1 (BR01)"]:
+        iowa_data_df_each_water_body_name = iowa_data_df.loc[iowa_data_df['name'] == each_water_body_name]
+        iowa_data_df_each_water_body_name = iowa_data_df_each_water_body_name.sort_values(by = 'sampleDate')
+        #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
+        print(iowa_data_df_each_water_body_name[['sampleDate', 'analyte','result']])
+        unique_analytes = list(iowa_data_df_each_water_body_name.analyte.unique())
+        column_names = []
+        column_names.extend(unique_analytes)
+        new_df = pd.DataFrame(columns = column_names)
+        for index, row in iowa_data_df_each_water_body_name.iterrows():
+            new_df.append(pd.Series(name=row["sampleDate"]))
+        
+        print(new_df)
+        print(iowa_data_df_each_water_body_name.analyte.value_counts())
+        print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
+        
+        print(iowa_data_df_each_water_body_name.shape)
+        #print(iowa_data_df_each_water_body_name.pivot(index='sampleDate', columns='analyte'))
     
     
 
