@@ -47,7 +47,7 @@ def main():
             new_df.loc[row["sampleDate"],row["analyte"]] = row["result"]
         
         print(new_df)
-        new_df.to_csv(f"raw_data/{each_water_body_name}.csv",index=False)
+        new_df.to_csv(f"raw_data/{each_water_body_name}.csv")
         #print(iowa_data_df_each_water_body_name.analyte.value_counts())
         #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
         
