@@ -35,6 +35,7 @@ def main():
     #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
     print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01[['sampleDate', 'analyte','result']])
     print(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))
+    print(f"Total analytes {len(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))}")
     
     #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01_water_temperature)
     
