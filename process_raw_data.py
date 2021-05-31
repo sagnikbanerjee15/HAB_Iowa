@@ -37,7 +37,8 @@ def main():
     iowa_data_df_Bloody_Run_Creek_Site_1_BR01 = iowa_data_df_Bloody_Run_Creek_Site_1_BR01.sort_values(by = 'sampleDate')
     #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
     print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01[['sampleDate', 'analyte','result']])
-    print(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))
+    #print(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))
+    print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.value_counts())
     print(f"Total analytes {len(list(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.analyte.unique()))}")
     
     print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
