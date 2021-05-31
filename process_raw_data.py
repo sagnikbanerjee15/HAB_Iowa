@@ -36,8 +36,7 @@ def main():
     for each_water_body_name in ["Bloody Run Creek Site #1 (BR01)"]:
         iowa_data_df_each_water_body_name = iowa_data_df.loc[iowa_data_df['name'] == each_water_body_name]
         iowa_data_df_each_water_body_name = iowa_data_df_each_water_body_name.sort_values(by = 'sampleDate')
-        #print(iowa_data_df_Bloody_Run_Creek_Site_1_BR01.shape)
-        print(iowa_data_df_each_water_body_name[['sampleDate', 'analyte','result']])
+        #print(iowa_data_df_each_water_body_name[['sampleDate', 'analyte','result']])
         unique_analytes = list(iowa_data_df_each_water_body_name.analyte.unique())
         column_names = []
         column_names.extend(unique_analytes)
@@ -46,8 +45,7 @@ def main():
             new_df.append(pd.Series(name=row["sampleDate"]))
             new_df.loc[row["sampleDate"],row["analyte"]] = row["result"]
         
-        print(new_df)
-        new_df.to_csv(f"raw_data/{each_water_body_name}.csv")
+        new_df.to_csv(f"raw_data/{each_water_body_name}.csv",sep = '\t')
         #print(iowa_data_df_each_water_body_name.analyte.value_counts())
         #print(f"Total analytes {len(list(iowa_data_df_each_water_body_name.analyte.unique()))}")
         
