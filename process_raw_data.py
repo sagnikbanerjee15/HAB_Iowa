@@ -16,8 +16,7 @@ def readWholeIowaData():
     return pd.read_csv("raw_data/iowa.csv",low_memory=False)
 
 def main():
-    pd.set_option('display.max_colwidth', 10000)
-    
+    pd.set_option('display.expand_frame_repr', False)
     # Read in the csv files from raw data directory
     readRawDataFiles()
     
